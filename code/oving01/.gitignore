@@ -1,0 +1,4 @@
+primenum
+*.o
+*.out
+build/
