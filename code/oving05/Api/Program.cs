@@ -60,4 +60,4 @@ app.MapPost("/run-csharp", async (HttpContext ctx) =>
     return Results.Json(new { proc.ExitCode, stdout, stderr });
 });
 
-app.Run("http://127.0.0.1:3030");
+app.Run();
