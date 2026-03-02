@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "C# Runner";
+}
+
+<h1>C# Runner</h1>
+
+<label for="code"><strong>Code</strong></label>
+<textarea id="code" style="width:100%;height:240px;font-family:monospace;">using System;
+
+Console.WriteLine("Hello from homepage");
+</textarea>
+
+<div style="margin-top:12px;">
+    <button id="runBtn" class="btn btn-primary">Compile & Run</button>
+</div>
+
+<h3 style="margin-top:16px;">Output</h3>
+<pre id="output" style="background:#111;color:#eee;padding:12px;white-space:pre-wrap;min-height:120px;"></pre>
+
+<script>
+  // Same-origin call to the Web app; Web will proxy to Api on :3030
+  const apiUrl = "/run-csharp";
+
+  const runBtn = document.getElementById("runBtn");
+  const codeEl = document.getElementById("code");
+  const outEl  = document.getElementById("output");
+
+  runBtn.addEventListener("click", async () => {
+    outEl.textContent = "Running...";
+    runBtn.disabled = true;
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: codeEl.value
+      });
+
+      const text = await res.text();
+
+      if (!res.ok) {
+        outEl.textContent = `HTTP ${res.status}\n\n${text}`;
+        return;
+      }
+
+      const json = JSON.parse(text);
+      outEl.textContent =
+        `exitCode: ${json.exitCode}\n\n` +
+        `stdout:\n${json.stdout ?? ""}\n\n` +
+        `stderr:\n${json.stderr ?? ""}\n`;
+    } finally {
+      runBtn.disabled = false;
+    }
+  });
+</script>
