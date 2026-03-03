@@ -1,0 +1,79 @@
+10:49:53 [API][ERR] Unhandled exception. System.IO.IOException: Failed to bind to address http://127.0.0.1:5166: address already in use.
+10:49:53 [API][ERR]  ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+10:49:53 [API][ERR]  ---> System.Net.Sockets.SocketException (98): Address already in use
+10:49:53 [API][ERR]    at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+10:49:53 [API][ERR]    at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+10:49:53 [API][ERR]    at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+10:49:53 [API][ERR]    --- End of inner exception stack trace ---
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+10:49:53 [API][ERR] --- End of stack trace from previous location ---
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    --- End of inner exception stack trace ---
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+10:49:53 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+10:49:53 [API][ERR]    at Program.<Main>$(String[] args) in /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api/Program.cs:line 63
+10:53:03 [API][ERR] Unhandled exception. System.IO.IOException: Failed to bind to address http://127.0.0.1:5166: address already in use.
+10:53:03 [API][ERR]  ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+10:53:03 [API][ERR]  ---> System.Net.Sockets.SocketException (98): Address already in use
+10:53:03 [API][ERR]    at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+10:53:03 [API][ERR]    at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+10:53:03 [API][ERR]    at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+10:53:03 [API][ERR]    --- End of inner exception stack trace ---
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+10:53:03 [API][ERR] --- End of stack trace from previous location ---
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    --- End of inner exception stack trace ---
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+10:53:03 [API][ERR]    at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+10:53:03 [API][ERR]    at Program.<Main>$(String[] args) in /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api/Program.cs:line 63
+10:54:08 [API] Using launch settings from /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api/Properties/launchSettings.json...
+10:54:08 [API] Building...
+10:54:11 [API] info: Microsoft.Hosting.Lifetime[14]
+10:54:11 [API]       Now listening on: http://localhost:5166
+10:54:11 [API] info: Microsoft.Hosting.Lifetime[0]
+10:54:11 [API]       Application started. Press Ctrl+C to shut down.
+10:54:11 [API] info: Microsoft.Hosting.Lifetime[0]
+10:54:11 [API]       Hosting environment: Development
+10:54:11 [API] info: Microsoft.Hosting.Lifetime[0]
+10:54:11 [API]       Content root path: /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api
+11:58:35 [API] info: Microsoft.Hosting.Lifetime[0]
+11:58:51 [API] Using launch settings from /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api/Properties/launchSettings.json...
+11:58:51 [API] Building...
+11:58:55 [API] info: Microsoft.Hosting.Lifetime[14]
+11:58:55 [API]       Now listening on: http://localhost:5166
+11:58:55 [API] info: Microsoft.Hosting.Lifetime[0]
+11:58:55 [API]       Application started. Press Ctrl+C to shut down.
+11:58:55 [API] info: Microsoft.Hosting.Lifetime[0]
+11:58:55 [API]       Hosting environment: Development
+11:58:55 [API] info: Microsoft.Hosting.Lifetime[0]
+11:58:55 [API]       Content root path: /home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Api

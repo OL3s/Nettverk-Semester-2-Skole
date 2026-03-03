@@ -1,0 +1,15 @@
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/bin/Debug/net10.0/Launcher
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/bin/Debug/net10.0/Launcher.deps.json
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/bin/Debug/net10.0/Launcher.runtimeconfig.json
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/bin/Debug/net10.0/Launcher.dll
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/bin/Debug/net10.0/Launcher.pdb
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.GeneratedMSBuildEditorConfig.editorconfig
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.AssemblyInfoInputs.cache
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.AssemblyInfo.cs
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.csproj.CoreCompileInputs.cache
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.sourcelink.json
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.dll
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/refint/Launcher.dll
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.pdb
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/Launcher.genruntimeconfig.cache
+/home/ole-kristian-wigum/Documents/School/Nettverk/code/oving05/Launcher/obj/Debug/net10.0/ref/Launcher.dll
