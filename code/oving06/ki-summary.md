@@ -8,10 +8,9 @@ The provided code runs a Node.js program that starts TWO servers using raw TCP s
 - That page contains JavaScript.
 
 2) Browser JavaScript
-- The HTML page runs JS that creates a WebSocket connection:
-  new WebSocket("ws://localhost:3001")
-- When the connection opens it sends the message "hello".
-- When it receives a message it shows an alert.
+- The HTML page runs JS that creates a WebSocket connection.
+- The test page provides an input + Send button and a log area.
+- When the client receives a message, it appends it to the on-page log.
 
 3) WebSocket server (port 3001)
 - This is the part we must implement.
@@ -54,6 +53,8 @@ Implementation started in this workspace:
    - Decodes incoming WebSocket frames from browser clients (masked frames), and supports short text messages.
    - Encodes and sends server-to-client frames (unmasked) and provides a `broadcast()` helper.
 - [server.js](server.js) wires it up with the provided HTTP test page (port 3000) + WebSocket endpoint (port 3001).
+   - The served test page connects to `ws://127.0.0.1:3001` (avoids potential IPv6/`localhost` resolution issues).
+   - The served test page disables caching (`Cache-Control: no-store`) to reduce stale-page issues while debugging.
 
 RFC6455 notes used:
 
@@ -85,7 +86,8 @@ How to run/test:
     - `node server.js`
 2) Open:
     - `http://localhost:3000`
-3) The browser sends `hello` on connect; the server broadcasts it back, and you should see an alert.
+3) Wait for status to become “Connected”, then type a message and press Send.
+4) Open the page in two tabs to verify broadcast (both tabs should log incoming messages).
 
 Quick verification checklist (what to demonstrate when delivering):
 
@@ -100,3 +102,11 @@ Limitations / scope choices:
 - No fragmentation support: frames with `FIN=0` are rejected (fits “korte meldinger”).
 - No extensions (e.g. permessage-deflate) and no TLS (`wss://`).
 - Payload lengths > 65535 are not a target for this assignment (but basic handling is present).
+
+Debugging notes from implementation/testing:
+
+- If the page is stuck on “Connecting…” and the Send button never enables, the page’s JavaScript is likely not running.
+   - In Brave, Shields or an extension can block scripts even on `localhost`.
+   - Use a hard refresh (`Ctrl+Shift+R`) after changes.
+- Be careful when embedding JavaScript inside a Node template literal: writing `"\n"` inside the server-side string can become an actual newline in the browser source and break parsing.
+   - Use `"\\n"` so the browser receives a valid `\n` escape sequence.
