@@ -60,9 +60,9 @@ Netverk er delt inn i forskjellige lag, disse er helt separat fra hverandre, og 
 Vil si at innholdet (nyttelast; dataen til laget over) på hvert enkel lag i OSI kan krypteres uavhengi av hva som skjer i andre lag. Da blkir feil av en enkeltstående beskyttelsesmekanisme ikke føre til  at det helgetlige systemet bliur stående uten forsvarsverker (uten beskyttelse).
 
 De tre sikkerhetsmekanismekle som bruker i lagdelt struktur er `WPA2`, `TLS` og `VPN`, på forskjellige lag i OSI-modellen.
-- `WPA2` - Lenkelaget: Ethernet og Wi-Fi
 - `TLS` - Applikasjonslaget: HTTP, SMTP, FTP
 - `VPN` - Nettverkslaget: IP
+- `WPA2` - Lenkelaget: Ethernet og Wi-Fi
 
 ![lagdelt kryptering](image-4.png)
 
@@ -70,6 +70,7 @@ De tre sikkerhetsmekanismekle som bruker i lagdelt struktur er `WPA2`, `TLS` og 
 Ved å bruke forskjellige krypteringsmetoder vil sensitiv informasjon sikres godt, noe som er viktig i dagens samfunn. Alt blir kryptert uavheingige med hverandre i henhold til lag, dersom et lag feilereller noen klarer å bryte det, er det fortsatt flere lag med kryptering igenn.
 
 #### 1. TLS (Transport Layer Security):
-HTTP***S*** er kryptert versjon av HTTP som benytter TLS for sikker transport. Og ligger i lagene Applikasjonslaget og Transportlaget. TLS sørger for at data som sendes mellom klient og server er kryptert og beskyttet mot avlytting og manipulering.
+HTTP***S*** er kryptert versjon av HTTP som benytter TLS for sikker transport. Og ligger i lagene Applikasjonslaget og Transportlaget. TLS sørger for at data som sendes mellom klient og server er kryptert og beskyttet mot avlytting og manipulering. Er etterfølgeren til SSL (Secure Sockets Layer) og er mye brukt for å sikre nettkommunikasjon. TLS brukes også i andre protokoller som SMTP (for e-post) og FTP (for filoverføring) for å sikre dataoverføringen.
 
-
+#### 2. VPN (Virtual Private Network):
+Er som regel i flere lag i OSI-modellen, men store deler av arbeidet skjer i nettverkslaget (IP, ICMP). Her er ofte nyttelasten fra transportlaget allerede kryptert (TLS). 
