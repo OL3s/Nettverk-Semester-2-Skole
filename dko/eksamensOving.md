@@ -86,3 +86,24 @@ CCMP er sikrere enn TKIP og skal teoretisk være uknekkelig, men har vist seg å
 
 Etter å ha vært gjennom lenkelaget, går nyttelasten videre til det fysiske laget for å overføres til en annen datamaskin, da har det kanskje blitt brukt kryptering med TLS, VPN og WPA2 for en sikker overføring.
 
+## Hva er IP-nett?
+samling av datamaskiner med en felles nettadresse. Datamaskiner på samme IP-nett kan sande pakker uten å gå via en ruter. Hvis den skal sendes til en annen IP-nett, sendes den gjennom ruteren. Dette blir adressert ved hjelp av en IP-adresse, som er en unik identifikator.
+
+IP-adressen består av:
+- Nett-id
+- Host-id
+
+Disse kan ikke leses direkte fra EP-en uten at man bruker en logisk **OG operasjon** på nettmasken og IP-adressen for å finne den. En adresse kan også deles inn i flere mindre nett (subnett), som gir firdeler som bla. reduserer broadkast trafikk fra mange enheter som forstyrrer hverandre og øker sikkerhet.
+
+### Beskrivelse 
+1. #### IP-Nett:
+- **Nettverkslaget (IP):** Sørger for at hver pakke som skal sendes via rutes gjennom nettet.
+- **Ruter:** Videresender pakker mellom ulike IP-nett gjennom ulike datanettverkene den er koblet opp med.
+
+IP-nett er noe av det mest sentrale innen datakommunikasjon, alt av datatrafikk og sending av datapakker skjer over IP-nett og rutere. Ved at det er en samling av maskiner med lik nettadresse har de dermet lik nettmasker. Dette betyr også at de har samme kringkasningsdomene siden de befinner seg i samme nett-lag
+
+ ![alt text](image-6.png)
+
+
+1. #### Hvordan fungerer IP-nettet:
+ 
