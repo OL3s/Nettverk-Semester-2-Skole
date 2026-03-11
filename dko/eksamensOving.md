@@ -22,7 +22,7 @@ Fysisk lag
 
 ## Om Lagmodellen
 - Utviklet for å dele opp en kompleks oppgave i separate deloppgaver, organisert i "lag".
-- Modellen er utviklet av `ISO` og kalles Open Systems Interconnection (OSI) modellen.
+- Modellen er utviklet av `ISO` og kalles Open Systems Interconnection (`OSI`) modellen.
 - Andre standardiseringsorganisasjoner er `IETF`, `IEEE` og `W3C`.
 
 *Det er flere utgaver av modellen, bla. 7-lags OSI-modellen og en TCO/IP-modell. Men vi benytter den forenklede modellen*
@@ -70,7 +70,19 @@ De tre sikkerhetsmekanismekle som bruker i lagdelt struktur er `WPA2`, `TLS` og 
 Ved å bruke forskjellige krypteringsmetoder vil sensitiv informasjon sikres godt, noe som er viktig i dagens samfunn. Alt blir kryptert uavheingige med hverandre i henhold til lag, dersom et lag feilereller noen klarer å bryte det, er det fortsatt flere lag med kryptering igenn.
 
 #### 1. TLS (Transport Layer Security):
-HTTP***S*** er kryptert versjon av HTTP som benytter TLS for sikker transport. Og ligger i lagene Applikasjonslaget og Transportlaget. TLS sørger for at data som sendes mellom klient og server er kryptert og beskyttet mot avlytting og manipulering. Er etterfølgeren til SSL (Secure Sockets Layer) og er mye brukt for å sikre nettkommunikasjon. TLS brukes også i andre protokoller som SMTP (for e-post) og FTP (for filoverføring) for å sikre dataoverføringen.
+HTTP***S*** er kryptert versjon av HTTP som benytter TLS for sikker transport. Og ligger i lagene **Applikasjonslaget og Transportlaget**. TLS sørger for at data som sendes mellom klient og server er kryptert og beskyttet mot avlytting og manipulering. Er etterfølgeren til SSL (Secure Sockets Layer) og er mye brukt for å sikre nettkommunikasjon. TLS brukes også i andre protokoller som SMTP (for e-post) og FTP (for filoverføring) for å sikre dataoverføringen.
 
 #### 2. VPN (Virtual Private Network):
-Er som regel i flere lag i OSI-modellen, men store deler av arbeidet skjer i nettverkslaget (IP, ICMP). Her er ofte nyttelasten fra transportlaget allerede kryptert (TLS). 
+Er som regel i flere lag i OSI-modellen, men store deler av arbeidet skjer i **nettverkslaget (IP, ICMP)**. Her er ofte nyttelasten (dataen laget over) fra transportlaget allerede kryptert (TLS).
+
+VPN må autorisere seg , der kommunikasjon skjer via en kryptert nøkkel, der ingen uautoriserte brukere får tilgang til det som skjer tråløst på nettverket. Dataen er unyttig da den også er kryptert.
+
+![vpn](image-5.png)
+
+#### 3. WPA2 (Wi-Fi Protected Access 2):
+Benyttes av **lenkelaget (Ethernet & Wifi)**, det brukes etter både TLS og VPN når en datamaskin sender ut data. Brukes for å la enheter komble seg til et tråløst nett, uten at inntrengere kan lure seg inn, og er **påbudt for alle nye wifi-enheter** Søttter bruk av temporary key integrity protocol (`TKIP`) og Counter Mode with Cipher Block Chaining Message Authentication Code Protocol (`CCMP`) for å sikre tråløs kommunikasjon.
+
+CCMP er sikrere enn TKIP og skal teoretisk være uknekkelig, men har vist seg å ha svakheter som kunne benyttes.
+
+Etter å ha vært gjennom lenkelaget, går nyttelasten videre til det fysiske laget for å overføres til en annen datamaskin, da har det kanskje blitt brukt kryptering med TLS, VPN og WPA2 for en sikker overføring.
+
