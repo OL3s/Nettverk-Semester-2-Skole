@@ -7,6 +7,14 @@
 - Encapsulation: Data → TCP → IP → MAC
 - Decapsulation: motsatt vei
 
+| Lag | PDU-navn | Pakkenavn |
+| --- | --- | --- |
+| Applikasjon | Data / Melding | 
+| Transport | Segment (TCP) / Datagram (UDP) |
+| Nettverk | Pakke |
+| Lenke | Frame / Ramme |
+| Fysisk | Bits |
+
 ---
 
 ## 🔴 LAG + ROLLE
@@ -16,8 +24,36 @@
 | Applikasjon | tjenester (HTTP, DNS, SMTP) |
 | Transport | ende-til-ende (TCP/UDP) |
 | Nettverk | routing (IP) |
-| Lenke | lokal levering (MAC) |
+| Lenke | lokal levering (MAC, LLC, Ethernet, Wi-Fi) |
 | Fysisk | signal |
+
+## Mellom / spesialplasseringer
+
+| Begrep | Best plassering | Kommentar |
+| --- | --- | --- |
+| ARP | Mellom lenke og nettverk | Oversetter IP → MAC på lokalnettet |
+| TLS | Over transport / brukes av applikasjon | Kryptering over TCP, brukt av f.eks. HTTPS |
+| WPA2 | Lenkelag | Kryptering på WiFi |
+| VPN | Nettverkslag | Kryptert tunnel mellom nett |
+
+## Ikke mellomlag, men vanlige lagplasseringer
+
+| Begrep | Lag | Kommentar |
+| --- | --- | --- |
+| Socket | Ikke eget lag | Endepunkt = IP + port |
+| DNS | Applikasjon | Navn → IP |
+| DHCP | Applikasjon | Gir IP automatisk |
+| WebSocket | Applikasjon | Toveis kommunikasjon |
+| MIME | Applikasjon | Gjør at e-post kan inneholde binærdata |
+
+---
+
+## 🔴 STANDARDER / ORGANER
+
+- IETF (Internet Engineering Task Force) → lager og standardiserer internettprotokoller
+- IEEE (Institute of Electrical and Electronics Engineers) → lager standarder for blant annet Ethernet (802.3) og WiFi (802.11)
+- RFC (Request for Comments) → dokumentene som beskriver standarder og protokoller
+- Mange protokoller er beskrevet i RFC-er, for eksempel IP, TCP, HTTP og DNS
 
 ---
 
@@ -44,6 +80,14 @@
 - Navn → IP
 - Bruker TYPE (ikke port; for eksempel A, AAAA, MX, NS)
 - Cache + rekursiv (sjekk cache; ellers → root → TLD → autoritativ)
+- TTL bestemmer hvor lenge DNS-svar kan caches
+
+| Type | Betydning |
+| --- | --- |
+| A | IPv4 |
+| AAAA | IPv6 |
+| MX | mail |
+| NS | nameserver |
 
 #### Reverse DNS
 
@@ -97,6 +141,7 @@
 - Gir IP automatisk
 - Porter: 67 (server), 68 (client)
 - Bruker broadcast + MAC
+- Lease = IP-adressen lånes for en periode
 
 #### DORA (Discover → Offer → Request → Ack)
 
@@ -177,6 +222,14 @@
 
 ---
 
+## 🔴 TRAFIKKTYPER
+
+- Unicast = én til én
+- Broadcast = én til alle i lokalnettet
+- Multicast = én til mange i en gruppe
+
+---
+
 ## 🔴 PORTNUMMER (pugg)
 
 | Port | Tjeneste |
@@ -200,6 +253,8 @@
 
 SYN → SYN-ACK → ACK
 
+- ISN = Initial Sequence Number (startverdi for seq number)
+
 ### ACK regel (kvittering)
 
 ACK = siste byte + 1
@@ -222,6 +277,12 @@ ACK = siste byte + 1
 ### Connection close
 
 - starter med FIN
+
+Eksempel:
+1. A sender FIN
+2. B svarer med ACK
+3. B sender FIN
+4. A svarer med ACK
 
 ---
 
@@ -289,11 +350,44 @@ ACK = siste byte + 1
 
 ## 🔴 SUBNETTING
 
-- Nettverksadresse = første
-- Broadcast = siste
-- Host = mellom
+- Nettverksadresse = første adresse
+- Broadcast = siste adresse
+- Host = en plass mellom nettverksadresse og broadcast
+- CIDR = hvor mange bits er nettverksdel (for eksempel /24 = 24 bits nettverksdel, 8 bits host-del)
+
+*Eksempel:*
+- IP: 192.168.1.10/24
+- Nettverksadresse: 192.168.1.0
+- Broadcast: 192.168.1.255
+- Host: 192.168.1.1 - 192.168.1.254
+
+*Eksempel 2:*
+- IP: 192.168.1.10/22
+- Nettverksadresse: 192.168.0.0
+- Broadcast: 192.168.3.255
+- Host: 192.168.0.1 - 192.168.3.254
+
+*Utregning av nettverksadresse:*
 
 **CIDR (/24 osv) = nett-bits**
+
+---
+
+## 🔴 MTU / FRAGMENTERING
+
+- MTU = største pakkestørrelse som får plass på lenken
+- For stor pakke kan gi fragmentering i IPv4
+- IPv6-routere fragmenterer ikke på samme måte
+
+---
+
+## 🔴 IPV6 KORT
+
+- IPv6 = 128-bit adresser
+- Ingen broadcast
+- Bruker multicast i stedet for broadcast
+- Bruker Next Header i stedet for IPv4 Protocol field
+- Bruker NDP i stedet for ARP
 
 ---
 
@@ -311,6 +405,7 @@ ACK = siste byte + 1
 
 - Oversetter privat IP ↔ offentlig IP
 - Bruker port som nøkkel
+- PAT / NAPT = flere private IP-er deler én offentlig IP ved hjelp av porter
 
 ---
 
@@ -345,6 +440,7 @@ ACK = siste byte + 1
 
 - CSMA/CD → kabel (hub)
 - CSMA/CA → WiFi
+- RTS/CTS → WiFi, unngår kollisjoner
 - CRC → sjekksum
 - MAC første halvdel = produsent
 
@@ -438,7 +534,9 @@ ACK = siste byte + 1
 | HTTPS | HTTP Secure | HTTP med TLS for kryptert webtrafikk | Applikasjon |
 | WebSocket | Protokoll | Gir toveis kommunikasjon i samme forbindelse | Applikasjon |
 | DNS | Domain Name System | Oversetter domenenavn til IP-adresser | Applikasjon |
+| DNS TTL | Time To Live i DNS | Bestemmer hvor lenge et DNS-svar kan caches | Applikasjon |
 | DHCP | Dynamic Host Configuration Protocol | Deler ut IP, subnett, gateway og DNS automatisk | Applikasjon |
+| DHCP lease | Leieperiode | Hvor lenge en klient får beholde en IP-adresse | Applikasjon |
 | SMTP | Simple Mail Transfer Protocol | Sender e-post mellom klienter og servere | Applikasjon |
 | MIME | Multipurpose Internet Mail Extensions | Gjør at e-post kan inneholde binærdata og vedlegg | Applikasjon |
 | TCP | Transmission Control Protocol | Pålitelig transport med ACK, retransmisjon og rekkefølge | Transport |
@@ -462,6 +560,7 @@ ACK = siste byte + 1
 | Autoritativ navneserver | DNS-servertype | Har det endelige svaret for domenet | Applikasjon |
 | Cache | Mellomlagring | Lagrer tidligere svar for raskere oppslag | Flere |
 | DORA | Discover, Offer, Request, Ack | De fire stegene i DHCP-prosessen | Applikasjon |
+| ISN | Initial Sequence Number | Startverdien for sequence number i TCP | Transport |
 | SYN | TCP-flagg | Starter en TCP-forbindelse | Transport |
 | ACK | Acknowledgment | Bekrefter mottatte byte i TCP | Transport |
 | FIN | TCP-flagg | Avslutter en TCP-forbindelse | Transport |
@@ -472,6 +571,11 @@ ACK = siste byte + 1
 | Default gateway | Standard rute ut av nett | Sender trafikk ut av lokalnettet når ingen mer spesifikk rute finnes | Nettverk |
 | Protocol field | Felt i IP-header | Forteller om nyttelasten er TCP, UDP eller annet | Nettverk |
 | Next header | Felt i IPv6-header | Forteller hva som kommer etter IPv6-headeren | Nettverk |
+| MTU | Maximum Transmission Unit | Største pakkestørrelse som får plass på en lenke | Lenke |
+| Unicast | Trafikktype | Én avsender til én mottaker | Flere |
+| Broadcast | Trafikktype | Én avsender til alle i lokalnettet | Nettverk / lenke |
+| Multicast | Trafikktype | Én avsender til en gruppe mottakere | Flere |
+| NDP | Neighbor Discovery Protocol | IPv6 bruker dette i stedet for ARP | Nettverk / lenke |
 | Source port | Felt i TCP/UDP-header | Viser hvilken avsenderport som brukes | Transport |
 | Host | HTTP-header | Forteller hvilken server eller hvilket domene klienten vil nå | Applikasjon |
 | Cookie | HTTP-header/data | Lagrer tilstand mellom ellers stateless HTTP-requests | Applikasjon |
@@ -482,10 +586,12 @@ ACK = siste byte + 1
 | Nettverksadresse | Adresse-type | Første adresse i subnettet | Nettverk |
 | Broadcast | Adresse-type | Siste adresse i subnettet, brukes til alle i lokalnettet i IPv4 | Nettverk |
 | NAT | Network Address Translation | Oversetter privat IP til offentlig IP og tilbake | Nettverk |
+| PAT / NAPT | Port Address Translation | Flere enheter kan dele én offentlig IP ved hjelp av porter | Nettverk |
 | Ethernet | 802.3 | Kablet teknologi for lokal levering av rammer | Lenke |
 | WiFi | 802.11 | Trådløs teknologi for lokal levering av rammer | Lenke |
 | CSMA/CD | Carrier Sense Multiple Access with Collision Detection | Kollisjonshåndtering i delt kablet medium | Lenke |
 | CSMA/CA | Carrier Sense Multiple Access with Collision Avoidance | Unngår kollisjoner i WiFi | Lenke |
+| LLC | Logical Link Control | Logisk kontroll i lenkelaget, mellom nettverkslag og MAC-delen | Lenke |
 | CRC | Cyclic Redundancy Check | Oppdager bitfeil i en Ethernet-ramme | Lenke |
 | Switch | Nettverksenhet | Sender rammer videre basert på MAC-adresser | Lenke |
 | Router | Nettverksenhet | Sender pakker videre basert på IP-adresser | Nettverk |
